@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -39,7 +40,7 @@ const FilamentInputs: React.FC<FilamentInputsProps> = ({
       </div>
 
       <div className="text-sm text-muted-foreground">
-        Cost per gram: {(spoolCost / 1000).toFixed(3)} {currency}/g
+        Cost per gram: {(spoolCost / 1000).toFixed(3)} {currency}/gr
       </div>
     </div>;
 };
