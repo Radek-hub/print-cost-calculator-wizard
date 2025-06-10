@@ -17,29 +17,32 @@ const CostResults: React.FC<CostResultsProps> = ({ results }) => {
   };
 
   return (
-    <Card className="border-0 shadow-lg bg-gradient-to-br from-primary/5 to-secondary/5">
-      <CardHeader className="pb-4">
-        <CardTitle className="text-lg font-semibold text-primary">Cost Breakdown</CardTitle>
+    <Card className="border-slate-200 shadow-sm bg-white">
+      <CardHeader className="pb-4 border-b border-slate-100">
+        <CardTitle className="text-lg font-semibold text-slate-700 flex items-center gap-2">
+          <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
+          Cost Breakdown
+        </CardTitle>
       </CardHeader>
-      <CardContent className="space-y-4">
-        <div className="flex justify-between items-center p-3 bg-background/50 rounded-lg">
-          <span className="font-medium text-foreground">Energy Cost:</span>
-          <span className="font-semibold text-foreground">
+      <CardContent className="pt-6 space-y-4">
+        <div className="flex justify-between items-center p-3 bg-slate-50 rounded-lg border border-slate-100">
+          <span className="font-medium text-slate-600">Energy Cost:</span>
+          <span className="font-semibold text-slate-800">
             {formatCurrency(results.energyCost, results.currency)}
           </span>
         </div>
         
-        <div className="flex justify-between items-center p-3 bg-background/50 rounded-lg">
-          <span className="font-medium text-foreground">Filament Cost:</span>
-          <span className="font-semibold text-foreground">
+        <div className="flex justify-between items-center p-3 bg-slate-50 rounded-lg border border-slate-100">
+          <span className="font-medium text-slate-600">Filament Cost:</span>
+          <span className="font-semibold text-slate-800">
             {formatCurrency(results.filamentCost, results.currency)}
           </span>
         </div>
         
-        <div className="border-t pt-4">
-          <div className="flex justify-between items-center p-4 bg-primary/10 rounded-lg">
-            <span className="text-lg font-bold text-primary">Total Cost:</span>
-            <span className="text-xl font-bold text-primary">
+        <div className="border-t border-slate-200 pt-4">
+          <div className="flex justify-between items-center p-4 bg-emerald-50 rounded-lg border border-emerald-200">
+            <span className="text-lg font-bold text-emerald-700">Total Cost:</span>
+            <span className="text-xl font-bold text-emerald-700">
               {formatCurrency(results.totalCost, results.currency)}
             </span>
           </div>
