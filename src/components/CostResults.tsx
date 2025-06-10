@@ -1,7 +1,5 @@
-
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-
 interface CostResultsProps {
   results: {
     energyCost: number;
@@ -10,16 +8,15 @@ interface CostResultsProps {
     currency: string;
   };
 }
-
-const CostResults: React.FC<CostResultsProps> = ({ results }) => {
+const CostResults: React.FC<CostResultsProps> = ({
+  results
+}) => {
   const formatCurrency = (amount: number, currency: string) => {
     return `${amount.toFixed(2)} ${currency}`;
   };
-
-  return (
-    <Card className="border-slate-200 shadow-sm bg-white">
+  return <Card className="border-slate-200 shadow-sm bg-white">
       <CardHeader className="pb-4 border-b border-slate-100">
-        <CardTitle className="text-lg font-semibold text-slate-700 flex items-center gap-2">
+        <CardTitle className="text-slate-700 flex items-center gap-2 font-bold text-lg">
           <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
           Cost Breakdown
         </CardTitle>
@@ -48,8 +45,6 @@ const CostResults: React.FC<CostResultsProps> = ({ results }) => {
           </div>
         </div>
       </CardContent>
-    </Card>
-  );
+    </Card>;
 };
-
 export default CostResults;
