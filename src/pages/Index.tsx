@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Calculator } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -8,31 +9,46 @@ import TimeSelector from '@/components/TimeSelector';
 import FilamentInputs from '@/components/FilamentInputs';
 import CostResults from '@/components/CostResults';
 import { PrinterData, CountryData } from '@/lib/data';
+
 interface CalculationResult {
   energyCost: number;
   filamentCost: number;
   totalCost: number;
   currency: string;
 }
+
 const Index = () => {
   const [selectedBrand, setSelectedBrand] = useState('');
   const [selectedModel, setSelectedModel] = useState('');
   const [selectedCountry, setSelectedCountry] = useState('');
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
-  const [spoolCost, setSpoolCost] = useState(90);
-  const [printWeight, setPrintWeight] = useState(220);
+  const [spoolCost, setSpoolCost] = useState(0);
+  const [printWeight, setPrintWeight] = useState(0);
   const [currency, setCurrency] = useState('PLN');
   const [results, setResults] = useState<CalculationResult | null>(null);
+
+  const isFormValid = () => {
+    return selectedModel && 
+           selectedCountry && 
+           (hours > 0 || minutes > 0) && 
+           spoolCost > 0 && 
+           printWeight > 0;
+  };
+
   const calculateCost = () => {
-    if (!selectedModel || !selectedCountry) return;
+    if (!isFormValid()) return;
+
     const printer = PrinterData[selectedBrand]?.models.find(m => m.name === selectedModel);
     const country = CountryData.find(c => c.code === selectedCountry);
+
     if (!printer || !country) return;
+
     const totalTimeHours = hours + minutes / 60;
     const energyCost = printer.powerConsumption * totalTimeHours * country.electricityRate;
     const filamentCost = spoolCost / 1000 * printWeight;
     const totalCost = energyCost + filamentCost;
+
     setResults({
       energyCost,
       filamentCost,
@@ -40,6 +56,7 @@ const Index = () => {
       currency: country.currency
     });
   };
+
   const handleCountryChange = (countryCode: string) => {
     setSelectedCountry(countryCode);
     const country = CountryData.find(c => c.code === countryCode);
@@ -47,7 +64,17 @@ const Index = () => {
       setCurrency(country.currency);
     }
   };
-  return <div className="min-h-screen bg-slate-50">
+
+  // Default results with 0 values
+  const defaultResults = {
+    energyCost: 0,
+    filamentCost: 0,
+    totalCost: 0,
+    currency: currency
+  };
+
+  return (
+    <div className="min-h-screen bg-slate-50">
       <div className="container mx-auto px-4 py-8">
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-3 mb-4">
@@ -70,7 +97,12 @@ const Index = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent className="pt-6">
-                <PrinterSelector selectedBrand={selectedBrand} selectedModel={selectedModel} onBrandChange={setSelectedBrand} onModelChange={setSelectedModel} />
+                <PrinterSelector 
+                  selectedBrand={selectedBrand} 
+                  selectedModel={selectedModel} 
+                  onBrandChange={setSelectedBrand} 
+                  onModelChange={setSelectedModel} 
+                />
               </CardContent>
             </Card>
 
@@ -82,7 +114,10 @@ const Index = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent className="pt-6">
-                <CountrySelector selectedCountry={selectedCountry} onCountryChange={handleCountryChange} />
+                <CountrySelector 
+                  selectedCountry={selectedCountry} 
+                  onCountryChange={handleCountryChange} 
+                />
               </CardContent>
             </Card>
 
@@ -95,7 +130,12 @@ const Index = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="pt-6">
-                  <TimeSelector hours={hours} minutes={minutes} onHoursChange={setHours} onMinutesChange={setMinutes} />
+                  <TimeSelector 
+                    hours={hours} 
+                    minutes={minutes} 
+                    onHoursChange={setHours} 
+                    onMinutesChange={setMinutes} 
+                  />
                 </CardContent>
               </Card>
 
@@ -107,7 +147,13 @@ const Index = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="pt-6">
-                  <FilamentInputs spoolCost={spoolCost} printWeight={printWeight} currency={currency} onSpoolCostChange={setSpoolCost} onPrintWeightChange={setPrintWeight} />
+                  <FilamentInputs 
+                    spoolCost={spoolCost} 
+                    printWeight={printWeight} 
+                    currency={currency} 
+                    onSpoolCostChange={setSpoolCost} 
+                    onPrintWeightChange={setPrintWeight} 
+                  />
                 </CardContent>
               </Card>
             </div>
@@ -117,28 +163,24 @@ const Index = () => {
           <div className="space-y-6">
             <div className="sticky top-8">
               <div className="text-center mb-6">
-                <Button onClick={calculateCost} size="lg" className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-6 text-lg shadow-lg transition-all duration-200 hover:shadow-xl" disabled={!selectedModel || !selectedCountry}>
+                <Button 
+                  onClick={calculateCost} 
+                  size="lg" 
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-6 text-lg shadow-lg transition-all duration-200 hover:shadow-xl" 
+                  disabled={!isFormValid()}
+                >
                   <Calculator className="w-5 h-5 mr-2" />
                   Calculate Total Cost
                 </Button>
               </div>
 
-              {results && <CostResults results={results} />}
-              
-              {!results && <Card className="border-slate-200 shadow-sm bg-white">
-                  <CardContent className="p-8 text-center">
-                    <div className="text-slate-400 mb-4">
-                      <Calculator className="w-12 h-12 mx-auto mb-3 opacity-50" />
-                    </div>
-                    <p className="text-slate-500">
-                      Fill in the printer details and material information, then click "Calculate Total Cost" to see your 3D printing expenses.
-                    </p>
-                  </CardContent>
-                </Card>}
+              <CostResults results={results || defaultResults} />
             </div>
           </div>
         </div>
       </div>
-    </div>;
+    </div>
+  );
 };
+
 export default Index;
