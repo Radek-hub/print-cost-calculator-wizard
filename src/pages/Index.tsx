@@ -75,7 +75,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-8 max-w-6xl">
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-3 mb-4">
             <Calculator className="w-8 h-8 text-green-600" />
@@ -86,7 +86,7 @@ const Index = () => {
           </p>
         </div>
 
-        <div className="max-w-7xl mx-auto grid gap-8 lg:grid-cols-5">
+        <div className="max-w-4xl mx-auto grid gap-8 lg:grid-cols-5">
           {/* Left side - Inputs (3 columns) */}
           <div className="lg:col-span-3 space-y-6">
             <Card className="border-gray-200 shadow-sm bg-white">
