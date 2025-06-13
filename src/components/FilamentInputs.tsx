@@ -22,7 +22,7 @@ const FilamentInputs: React.FC<FilamentInputsProps> = ({
     <div className="space-y-4">
       <div>
         <Label htmlFor="spool-cost" className="text-sm font-medium text-foreground mb-2 block">
-          Filament Spool Cost (1kg)
+          Filament spool cost (1kg)
         </Label>
         <div className="relative">
           <Input 
@@ -41,7 +41,7 @@ const FilamentInputs: React.FC<FilamentInputsProps> = ({
 
       <div>
         <Label htmlFor="print-weight" className="text-sm font-medium text-foreground mb-2 block">
-          Print Weight
+          Print weight
         </Label>
         <div className="relative">
           <Input 

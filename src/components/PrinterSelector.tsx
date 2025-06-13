@@ -26,7 +26,7 @@ const PrinterSelector: React.FC<PrinterSelectorProps> = ({
     <div className="space-y-4">
       <div>
         <Label htmlFor="brand-select" className="text-sm font-medium text-foreground mb-2 block">
-          Printer Brand
+          Printer brand
         </Label>
         <Select value={selectedBrand} onValueChange={handleBrandChange}>
           <SelectTrigger id="brand-select" className="w-full">
@@ -44,7 +44,7 @@ const PrinterSelector: React.FC<PrinterSelectorProps> = ({
 
       <div>
         <Label htmlFor="model-select" className="text-sm font-medium text-foreground mb-2 block">
-          Printer Model
+          Printer model
         </Label>
         <Select 
           value={selectedModel} 

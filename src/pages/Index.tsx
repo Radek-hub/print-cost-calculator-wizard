@@ -74,14 +74,14 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-gray-50">
       <div className="container mx-auto px-4 py-8">
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <Calculator className="w-8 h-8 text-emerald-600" />
-            <h1 className="text-4xl text-slate-800 font-extrabold">3D Print Cost Calculator</h1>
+            <Calculator className="w-8 h-8 text-green-600" />
+            <h1 className="text-4xl text-gray-800 font-extrabold">3D print cost calculator</h1>
           </div>
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Calculate the total cost of your 3D prints including energy consumption, filament usage, and materials
           </p>
         </div>
@@ -89,11 +89,11 @@ const Index = () => {
         <div className="max-w-7xl mx-auto grid gap-8 lg:grid-cols-3">
           {/* Left side - Inputs */}
           <div className="lg:col-span-2 space-y-6">
-            <Card className="border-slate-200 shadow-sm bg-white">
-              <CardHeader className="pb-4 border-b border-slate-100">
-                <CardTitle className="text-lg text-slate-700 flex items-center gap-2 font-bold">
-                  <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
-                  Printer Selection
+            <Card className="border-gray-200 shadow-sm bg-white">
+              <CardHeader className="pb-4 border-b border-gray-100">
+                <CardTitle className="text-lg text-gray-700 flex items-center gap-2 font-bold">
+                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                  Printer selection
                 </CardTitle>
               </CardHeader>
               <CardContent className="pt-6">
@@ -106,11 +106,11 @@ const Index = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-slate-200 shadow-sm bg-white">
-              <CardHeader className="pb-4 border-b border-slate-100">
-                <CardTitle className="text-lg text-slate-700 flex items-center gap-2 font-bold">
-                  <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
-                  Location & Settings
+            <Card className="border-gray-200 shadow-sm bg-white">
+              <CardHeader className="pb-4 border-b border-gray-100">
+                <CardTitle className="text-lg text-gray-700 flex items-center gap-2 font-bold">
+                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                  Location & settings
                 </CardTitle>
               </CardHeader>
               <CardContent className="pt-6">
@@ -122,11 +122,11 @@ const Index = () => {
             </Card>
 
             <div className="grid gap-6 md:grid-cols-2">
-              <Card className="border-slate-200 shadow-sm bg-white">
-                <CardHeader className="pb-4 border-b border-slate-100">
-                  <CardTitle className="text-lg text-slate-700 flex items-center gap-2 font-bold">
-                    <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
-                    Print Duration
+              <Card className="border-gray-200 shadow-sm bg-white">
+                <CardHeader className="pb-4 border-b border-gray-100">
+                  <CardTitle className="text-lg text-gray-700 flex items-center gap-2 font-bold">
+                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                    Print duration
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="pt-6">
@@ -139,11 +139,11 @@ const Index = () => {
                 </CardContent>
               </Card>
 
-              <Card className="border-slate-200 shadow-sm bg-white">
-                <CardHeader className="pb-4 border-b border-slate-100">
-                  <CardTitle className="text-lg text-slate-700 flex items-center gap-2 font-bold">
-                    <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
-                    Material Costs
+              <Card className="border-gray-200 shadow-sm bg-white">
+                <CardHeader className="pb-4 border-b border-gray-100">
+                  <CardTitle className="text-lg text-gray-700 flex items-center gap-2 font-bold">
+                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                    Material costs
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="pt-6">
@@ -170,7 +170,7 @@ const Index = () => {
                   disabled={!isFormValid()}
                 >
                   <Calculator className="w-5 h-5 mr-2" />
-                  Calculate Total Cost
+                  Calculate total cost
                 </Button>
               </div>
 

@@ -16,7 +16,7 @@ const CountrySelector: React.FC<CountrySelectorProps> = ({
   return (
     <div>
       <Label htmlFor="country-select" className="text-sm font-medium text-foreground mb-2 block">
-        Country / Region
+        Country / region
       </Label>
       <Select value={selectedCountry} onValueChange={onCountryChange}>
         <SelectTrigger id="country-select" className="w-full">
