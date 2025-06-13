@@ -86,9 +86,9 @@ const Index = () => {
           </p>
         </div>
 
-        <div className="max-w-7xl mx-auto grid gap-8 lg:grid-cols-3">
-          {/* Left side - Inputs */}
-          <div className="lg:col-span-2 space-y-6">
+        <div className="max-w-7xl mx-auto grid gap-8 lg:grid-cols-5">
+          {/* Left side - Inputs (3 columns) */}
+          <div className="lg:col-span-3 space-y-6">
             <Card className="border-gray-200 shadow-sm bg-white">
               <CardHeader className="pb-4 border-b border-gray-100">
                 <CardTitle className="text-lg text-gray-700 flex items-center gap-2 font-bold">
@@ -159,8 +159,8 @@ const Index = () => {
             </div>
           </div>
 
-          {/* Right side - Calculate button and results */}
-          <div className="space-y-6">
+          {/* Right side - Calculate button and results (2 columns) */}
+          <div className="lg:col-span-2 space-y-6">
             <div className="sticky top-8">
               <div className="text-center mb-6">
                 <Button 
