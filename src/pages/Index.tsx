@@ -63,7 +63,7 @@ const Index = () => {
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-3 mb-4">
             <Calculator className="w-8 h-8 text-green-600" />
-            <h1 className="text-4xl text-gray-800 font-extrabold">SliceCal</h1>
+            <h1 className="text-4xl font-extrabold text-indigo-600">SliceCal</h1>
           </div>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Calculate the total cost of your 3D prints including energy consumption, filament usage, and materials
