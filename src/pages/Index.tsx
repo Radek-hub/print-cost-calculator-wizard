@@ -128,7 +128,7 @@ const Index = () => {
           <div className="lg:col-span-2 space-y-6">
             <div className="sticky top-8">
               <div className="text-center mb-6">
-                <Button onClick={calculateCost} size="lg" className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-6 text-lg shadow-lg transition-all duration-200 hover:shadow-xl" disabled={!isFormValid()}>
+                <Button onClick={calculateCost} size="lg" disabled={!isFormValid()} className="w-full text-white font-semibold py-6 text-lg shadow-lg transition-all duration-200 hover:shadow-xl bg-indigo-700 hover:bg-indigo-600">
                   <Calculator className="w-5 h-5 mr-2" />
                   Calculate total cost
                 </Button>
