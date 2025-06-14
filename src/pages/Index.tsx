@@ -8,12 +8,14 @@ import TimeSelector from '@/components/TimeSelector';
 import FilamentInputs from '@/components/FilamentInputs';
 import CostResults from '@/components/CostResults';
 import { PrinterData, CountryData } from '@/lib/data';
+
 interface CalculationResult {
   energyCost: number;
   filamentCost: number;
   totalCost: number;
   currency: string;
 }
+
 const Index = () => {
   const [selectedBrand, setSelectedBrand] = useState('');
   const [selectedModel, setSelectedModel] = useState('');
@@ -58,11 +60,17 @@ const Index = () => {
     totalCost: 0,
     currency: currency
   };
-  return <div className="min-h-screen bg-gray-50">
-      <div className="container mx-auto px-4 py-8 max-w-6xl">
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <div className="container mx-auto px-4 py-8 max-w-4xl">
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-3 mb-4">
-            
+            <img 
+              src="/lovable-uploads/fc6d5f2e-9480-4e08-9930-468cf981301d.png" 
+              alt="SliceCal Logo" 
+              className="w-12 h-12"
+            />
             <h1 className="text-4xl font-extrabold text-indigo-600">SliceCal</h1>
           </div>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -139,6 +147,8 @@ const Index = () => {
           </div>
         </div>
       </div>
-    </div>;
+    </div>
+  );
 };
+
 export default Index;
