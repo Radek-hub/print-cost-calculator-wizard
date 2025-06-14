@@ -57,7 +57,7 @@ const FilamentInputs: React.FC<FilamentInputsProps> = ({
       </div>
 
       <div className="text-sm text-muted-foreground">
-        Cost per gram: {(spoolCost / 1000).toFixed(3)} {currency}/gr
+        Cost per gram: {(spoolCost / 1000).toFixed(2)} {currency}/gr
       </div>
     </div>
   );
