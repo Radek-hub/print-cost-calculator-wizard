@@ -62,7 +62,7 @@ const Index = () => {
       <div className="container mx-auto px-4 py-8 max-w-6xl">
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <Calculator className="w-8 h-8 text-green-600" />
+            
             <h1 className="text-4xl font-extrabold text-indigo-600">SliceCal</h1>
           </div>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
