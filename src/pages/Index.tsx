@@ -8,12 +8,14 @@ import TimeSelector from '@/components/TimeSelector';
 import FilamentInputs from '@/components/FilamentInputs';
 import CostResults from '@/components/CostResults';
 import { PrinterData, CountryData } from '@/lib/data';
+
 interface CalculationResult {
   energyCost: number;
   filamentCost: number;
   totalCost: number;
   currency: string;
 }
+
 const Index = () => {
   const [selectedBrand, setSelectedBrand] = useState('');
   const [selectedModel, setSelectedModel] = useState('');
@@ -24,9 +26,11 @@ const Index = () => {
   const [printWeight, setPrintWeight] = useState(0);
   const [currency, setCurrency] = useState('PLN');
   const [results, setResults] = useState<CalculationResult | null>(null);
+
   const isFormValid = () => {
     return selectedModel && selectedCountry && (hours > 0 || minutes > 0) && spoolCost > 0 && printWeight > 0;
   };
+
   const calculateCost = () => {
     if (!isFormValid()) return;
     const printer = PrinterData[selectedBrand]?.models.find(m => m.name === selectedModel);
@@ -43,6 +47,7 @@ const Index = () => {
       currency: country.currency
     });
   };
+
   const handleCountryChange = (countryCode: string) => {
     setSelectedCountry(countryCode);
     const country = CountryData.find(c => c.code === countryCode);
@@ -58,7 +63,9 @@ const Index = () => {
     totalCost: 0,
     currency: currency
   };
-  return <div className="min-h-screen bg-gray-50">
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-white via-white to-gray-50">
       <div className="container mx-auto px-4 py-8 max-w-[960px]">
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-3 mb-4">
@@ -137,6 +144,8 @@ const Index = () => {
           </div>
         </div>
       </div>
-    </div>;
+    </div>
+  );
 };
+
 export default Index;
