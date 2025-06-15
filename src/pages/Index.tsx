@@ -8,14 +8,12 @@ import TimeSelector from '@/components/TimeSelector';
 import FilamentInputs from '@/components/FilamentInputs';
 import CostResults from '@/components/CostResults';
 import { PrinterData, CountryData } from '@/lib/data';
-
 interface CalculationResult {
   energyCost: number;
   filamentCost: number;
   totalCost: number;
   currency: string;
 }
-
 const Index = () => {
   const [selectedBrand, setSelectedBrand] = useState('');
   const [selectedModel, setSelectedModel] = useState('');
@@ -60,22 +58,14 @@ const Index = () => {
     totalCost: 0,
     currency: currency
   };
-
-  return (
-    <div className="min-h-screen bg-gray-50">
+  return <div className="min-h-screen bg-gray-50">
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <img 
-              src="/lovable-uploads/fc6d5f2e-9480-4e08-9930-468cf981301d.png" 
-              alt="SliceCal Logo" 
-              className="w-12 h-12"
-            />
+            <img src="/lovable-uploads/fc6d5f2e-9480-4e08-9930-468cf981301d.png" alt="SliceCal Logo" className="w-12 h-12" />
             <h1 className="text-4xl font-extrabold text-indigo-600">SliceCal</h1>
           </div>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Calculate the total cost of your 3D prints including energy consumption, filament usage, and materials
-          </p>
+          <p className="text-gray-600 max-w-2xl mx-auto font-extrabold text-xl">The smart way to price your 3D prints</p>
         </div>
 
         <div className="max-w-4xl mx-auto grid gap-8 lg:grid-cols-5">
@@ -147,8 +137,6 @@ const Index = () => {
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
