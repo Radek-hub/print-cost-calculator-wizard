@@ -8,14 +8,12 @@ import TimeSelector from '@/components/TimeSelector';
 import FilamentInputs from '@/components/FilamentInputs';
 import CostResults from '@/components/CostResults';
 import { PrinterData, CountryData } from '@/lib/data';
-
 interface CalculationResult {
   energyCost: number;
   filamentCost: number;
   totalCost: number;
   currency: string;
 }
-
 const Index = () => {
   const [selectedBrand, setSelectedBrand] = useState('');
   const [selectedModel, setSelectedModel] = useState('');
@@ -67,7 +65,7 @@ const Index = () => {
             <img src="/lovable-uploads/fc6d5f2e-9480-4e08-9930-468cf981301d.png" alt="SliceCal Logo" className="w-[120px] h-[120px]" />
             <h1 className="text-4xl font-extrabold text-indigo-600">SliceCal</h1>
           </div>
-          <p className="text-gray-600 max-w-2xl mx-auto font-extrabold text-xl">The smart way to price your 3D prints</p>
+          <p className="text-gray-600 max-w-2xl mx-auto text-xl font-thin">The smart way to price your 3D prints</p>
         </div>
 
         <div className="max-w-4xl mx-auto grid gap-8 lg:grid-cols-5">
@@ -141,5 +139,4 @@ const Index = () => {
       </div>
     </div>;
 };
-
 export default Index;
