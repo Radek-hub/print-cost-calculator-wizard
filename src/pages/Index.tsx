@@ -64,7 +64,7 @@ const Index = () => {
       <div className="container mx-auto px-4 py-8 max-w-[960px]">
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <img src="/lovable-uploads/fc6d5f2e-9480-4e08-9930-468cf981301d.png" alt="SliceCal Logo" className="w-30 h-30" />
+            <img src="/lovable-uploads/fc6d5f2e-9480-4e08-9930-468cf981301d.png" alt="SliceCal Logo" className="w-[120px] h-[120px]" />
             <h1 className="text-4xl font-extrabold text-indigo-600">SliceCal</h1>
           </div>
           <p className="text-gray-600 max-w-2xl mx-auto font-extrabold text-xl">The smart way to price your 3D prints</p>
