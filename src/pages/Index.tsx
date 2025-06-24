@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Calculator } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -102,7 +103,7 @@ const Index = () => {
               <CardHeader className="pb-4 border-b border-gray-100">
                 <CardTitle className="text-lg text-gray-700 flex items-center gap-2 font-bold">
                   <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  Location & settings
+                  Location - electricity rate
                 </CardTitle>
               </CardHeader>
               <CardContent className="pt-6">
