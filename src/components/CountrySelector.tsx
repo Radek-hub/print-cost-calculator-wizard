@@ -66,7 +66,6 @@ const CountrySelector: React.FC<CountrySelectorProps> = ({
                 id="custom-rate-input"
                 type="number"
                 step="0.001"
-                min="0"
                 value={customRate || ''}
                 onChange={(e) => onCustomRateChange(parseFloat(e.target.value) || 0)}
                 placeholder={`Enter rate (e.g., ${selectedCountryData.electricityRate})`}
