@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Label } from '@/components/ui/label';
@@ -58,7 +57,7 @@ const CountrySelector: React.FC<CountrySelectorProps> = ({
             />
           </div>
 
-          {useCustomRate ? (
+          {useCustomRate && (
             <div className="space-y-2">
               <Label htmlFor="custom-rate-input" className="text-sm font-medium text-gray-700">
                 Custom rate ({selectedCountryData.currency}/kWh)
@@ -73,10 +72,6 @@ const CountrySelector: React.FC<CountrySelectorProps> = ({
                 placeholder={`Enter rate (e.g., ${selectedCountryData.electricityRate})`}
                 className="w-full"
               />
-            </div>
-          ) : (
-            <div className="text-sm text-gray-600">
-              Using default rate: <span className="font-semibold">{selectedCountryData.electricityRate} {selectedCountryData.currency}/kWh</span>
             </div>
           )}
         </div>
