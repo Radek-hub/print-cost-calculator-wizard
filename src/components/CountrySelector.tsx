@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
@@ -24,6 +24,26 @@ const CountrySelector: React.FC<CountrySelectorProps> = ({
   onCustomRateChange
 }) => {
   const selectedCountryData = CountryData.find(c => c.code === selectedCountry);
+  const [inputValue, setInputValue] = useState('');
+
+  // Sync input value with customRate prop
+  useEffect(() => {
+    setInputValue(customRate > 0 ? customRate.toString() : '');
+  }, [customRate]);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setInputValue(value);
+    
+    if (value === '') {
+      onCustomRateChange(0);
+    } else {
+      const numValue = parseFloat(value);
+      if (!isNaN(numValue)) {
+        onCustomRateChange(numValue);
+      }
+    }
+  };
 
   return (
     <div className="space-y-4">
@@ -67,18 +87,8 @@ const CountrySelector: React.FC<CountrySelectorProps> = ({
                 id="custom-rate-input"
                 type="number"
                 step="0.001"
-                value={customRate === 0 ? '' : customRate}
-                onChange={(e) => {
-                  const value = e.target.value;
-                  if (value === '') {
-                    onCustomRateChange(0);
-                  } else {
-                    const numValue = parseFloat(value);
-                    if (!isNaN(numValue)) {
-                      onCustomRateChange(numValue);
-                    }
-                  }
-                }}
+                value={inputValue}
+                onChange={handleInputChange}
                 placeholder={`Enter rate (e.g., ${selectedCountryData.electricityRate})`}
                 className="w-full"
               />
