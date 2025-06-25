@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Label } from '@/components/ui/label';
@@ -66,8 +67,18 @@ const CountrySelector: React.FC<CountrySelectorProps> = ({
                 id="custom-rate-input"
                 type="number"
                 step="0.001"
-                value={customRate || ''}
-                onChange={(e) => onCustomRateChange(parseFloat(e.target.value) || 0)}
+                value={customRate === 0 ? '' : customRate}
+                onChange={(e) => {
+                  const value = e.target.value;
+                  if (value === '') {
+                    onCustomRateChange(0);
+                  } else {
+                    const numValue = parseFloat(value);
+                    if (!isNaN(numValue)) {
+                      onCustomRateChange(numValue);
+                    }
+                  }
+                }}
                 placeholder={`Enter rate (e.g., ${selectedCountryData.electricityRate})`}
                 className="w-full"
               />
