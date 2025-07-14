@@ -47,7 +47,7 @@ export const PrinterData: Record<string, PrinterBrand> = {
 };
 
 export const CountryData: Country[] = [
-  { code: "PL", name: "Poland", flag: "🇵🇱", electricityRate: 0.623, currency: "PLN" },
+  { code: "PL", name: "Poland", flag: "🇵🇱", electricityRate: 1.1, currency: "PLN" },
   { code: "DE", name: "Germany", flag: "🇩🇪", electricityRate: 0.312, currency: "EUR" },
   { code: "US", name: "United States", flag: "🇺🇸", electricityRate: 0.156, currency: "USD" },
   { code: "GB", name: "United Kingdom", flag: "🇬🇧", electricityRate: 0.285, currency: "GBP" },
