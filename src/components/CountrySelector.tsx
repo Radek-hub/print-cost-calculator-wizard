@@ -63,9 +63,12 @@ const CountrySelector: React.FC<CountrySelectorProps> = ({
             ))}
           </SelectContent>
         </Select>
-        <p className="text-xs text-muted-foreground mt-1">
-          Electricity rates are approximate and may vary by region and time of day
-        </p>
+        <div className="text-xs text-muted-foreground mt-2 space-y-1">
+          <p>⚡ Average electricity price in your country.</p>
+          <p>Prices vary depending on your energy plan, provider, and time of day - so this is just an estimate, but pretty close ✌️</p>
+          <p>The data is updated periodically.</p>
+          <p>Got your own rate? You can override it manually.</p>
+        </div>
       </div>
 
       {selectedCountryData && (
