@@ -63,6 +63,9 @@ const CountrySelector: React.FC<CountrySelectorProps> = ({
             ))}
           </SelectContent>
         </Select>
+        <p className="text-xs text-muted-foreground mt-1">
+          Electricity rates are approximate and may vary by region and time of day
+        </p>
       </div>
 
       {selectedCountryData && (
