@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Calculator } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -9,14 +8,12 @@ import TimeSelector from '@/components/TimeSelector';
 import FilamentInputs from '@/components/FilamentInputs';
 import CostResults from '@/components/CostResults';
 import { PrinterData, CountryData } from '@/lib/data';
-
 interface CalculationResult {
   energyCost: number;
   filamentCost: number;
   totalCost: number;
   currency: string;
 }
-
 const Index = () => {
   const [selectedBrand, setSelectedBrand] = useState('');
   const [selectedModel, setSelectedModel] = useState('');
@@ -29,26 +26,20 @@ const Index = () => {
   const [useCustomElectricityRate, setUseCustomElectricityRate] = useState(false);
   const [customElectricityRate, setCustomElectricityRate] = useState(0);
   const [results, setResults] = useState<CalculationResult | null>(null);
-
   const isFormValid = () => {
     const hasValidRate = useCustomElectricityRate ? customElectricityRate > 0 : true;
     return selectedModel && selectedCountry && (hours > 0 || minutes > 0) && spoolCost > 0 && printWeight > 0 && hasValidRate;
   };
-
   const calculateCost = () => {
     if (!isFormValid()) return;
-
     const printer = PrinterData[selectedBrand]?.models.find(m => m.name === selectedModel);
     const country = CountryData.find(c => c.code === selectedCountry);
-    
     if (!printer || !country) return;
-
     const totalTimeHours = hours + minutes / 60;
     const electricityRate = useCustomElectricityRate ? customElectricityRate : country.electricityRate;
     const energyCost = printer.powerConsumption * totalTimeHours * electricityRate;
     const filamentCost = spoolCost / 1000 * printWeight;
     const totalCost = energyCost + filamentCost;
-
     setResults({
       energyCost,
       filamentCost,
@@ -56,7 +47,6 @@ const Index = () => {
       currency: country.currency
     });
   };
-
   const handleCountryChange = (countryCode: string) => {
     setSelectedCountry(countryCode);
     const country = CountryData.find(c => c.code === countryCode);
@@ -72,12 +62,10 @@ const Index = () => {
     totalCost: 0,
     currency: currency
   };
-
-  return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-white to-gray-50">
-      <div className="container mx-auto px-4 py-8 max-w-[960px]">
+  return <div className="min-h-screen bg-gradient-to-b from-white via-white to-gray-50">
+      <div className="container mx-auto px-4 max-w-[960px] py-[16px]">
         <div className="text-center mb-8">
-          <div className="flex items-center justify-center gap-3 mb-4">
+          <div className="flex items-center justify-center gap-3 mb-4 my-0 py-0">
             <img src="/lovable-uploads/df2c7151-598d-430b-9318-0e5a728a54f6.png" alt="SliceCal Logo" className="w-[120px] h-[120px]" />
             <h1 className="text-4xl font-extrabold text-indigo-600">SliceCal</h1>
           </div>
@@ -107,14 +95,7 @@ const Index = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent className="pt-6">
-                <CountrySelector 
-                  selectedCountry={selectedCountry} 
-                  onCountryChange={handleCountryChange}
-                  useCustomRate={useCustomElectricityRate}
-                  customRate={customElectricityRate}
-                  onUseCustomRateChange={setUseCustomElectricityRate}
-                  onCustomRateChange={setCustomElectricityRate}
-                />
+                <CountrySelector selectedCountry={selectedCountry} onCountryChange={handleCountryChange} useCustomRate={useCustomElectricityRate} customRate={customElectricityRate} onUseCustomRateChange={setUseCustomElectricityRate} onCustomRateChange={setCustomElectricityRate} />
               </CardContent>
             </Card>
 
@@ -160,8 +141,6 @@ const Index = () => {
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
