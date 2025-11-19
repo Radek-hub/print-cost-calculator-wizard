@@ -55,7 +55,7 @@ const CountrySelector: React.FC<CountrySelectorProps> = ({
           </SelectContent>
         </Select>
         <div className="text-xs text-muted-foreground mt-2 space-y-1">
-          <p className="text-slate-900 py-[2px] my-[16px]">⚡ Average electricity price in your country.</p>
+          <p className="text-slate-900 py-[2px] my-[16px]">⚡ Average electricity price in your country</p>
           <p className="my-0 py-0">Prices vary depending on your energy plan, provider, and time of day - so this is just an estimate, but pretty close ✌️</p>
           
           
