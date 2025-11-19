@@ -137,6 +137,20 @@ const Index = () => {
               </div>
 
               <CostResults results={results || defaultResults} />
+              
+              <div className="mt-6 text-center text-sm text-gray-600">
+                <p>
+                  Share your thoughts or suggestions 👉{' '}
+                  <a 
+                    href="https://forms.gle/D6G4vWLwT6mRch5D8" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-indigo-600 hover:text-indigo-700 font-semibold underline"
+                  >
+                    Leave feedback
+                  </a>
+                </p>
+              </div>
             </div>
           </div>
         </div>
