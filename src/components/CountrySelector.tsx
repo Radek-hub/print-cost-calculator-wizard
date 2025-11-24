@@ -3,6 +3,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
 import { Input } from '@/components/ui/input';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { Info } from 'lucide-react';
 import { CountryData } from '@/lib/data';
 interface CountrySelectorProps {
   selectedCountry: string;
@@ -54,11 +56,20 @@ const CountrySelector: React.FC<CountrySelectorProps> = ({
               </SelectItem>)}
           </SelectContent>
         </Select>
-        <div className="text-xs text-muted-foreground mt-2 space-y-1">
-          <p className="text-slate-900 py-[2px] my-[16px]">⚡ Average electricity price in your country</p>
-          <p className="my-0 py-0">Prices vary depending on your energy plan, provider, and time of day - so this is just an estimate, but pretty close ✌️</p>
-          
-          
+        <div className="text-xs text-muted-foreground mt-2">
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <p className="text-slate-900 py-[2px] my-[16px] inline-flex items-center gap-1 cursor-help">
+                  ⚡ Average electricity price in your country
+                  <Info className="w-4 h-4 text-slate-600" />
+                </p>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p className="max-w-xs">Prices vary depending on your energy plan, provider, and time of day - so this is just an estimate, but pretty close ✌️</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         </div>
       </div>
 
