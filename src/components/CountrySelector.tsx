@@ -60,7 +60,7 @@ const CountrySelector: React.FC<CountrySelectorProps> = ({
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
-                <p className="text-slate-900 py-[2px] my-[16px] inline-flex items-center gap-1 cursor-help">
+                <p className="py-[2px] my-[16px] inline-flex items-center gap-1 cursor-help text-gray-400">
                   ⚡ Average electricity price in your country
                   <Info className="w-4 h-4 text-slate-600" />
                 </p>
