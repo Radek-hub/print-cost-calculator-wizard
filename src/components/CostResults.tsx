@@ -37,7 +37,7 @@ const CostResults: React.FC<CostResultsProps> = ({
         </div>
         
         <div className="border-t border-gray-200 pt-4">
-          <div className="flex justify-between items-center p-4 rounded-lg border py-[24px] bg-green-100 border-green-200">
+          <div className="flex justify-between items-center p-4 rounded-lg border py-[24px] border-green-200 bg-green-50">
             <span className="text-lg font-bold text-slate-700">Total cost:</span>
             <span className="text-xl font-bold text-slate-700">
               {formatCurrency(results.totalCost, results.currency)}
