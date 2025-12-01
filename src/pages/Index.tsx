@@ -63,12 +63,18 @@ const Index = () => {
     currency: currency
   };
   return <div className="min-h-screen bg-gradient-to-b from-white via-white to-gray-50">
-      <div className="container mx-auto px-4 max-w-[960px] py-[16px]">
-        <div className="text-center mb-8">
-          <div className="flex items-center justify-center gap-3 mb-4 my-0 py-0">
-            <img src="/lovable-uploads/df2c7151-598d-430b-9318-0e5a728a54f6.png" alt="SliceCal Logo" className="w-[120px] h-[120px]" />
-            <h1 className="text-4xl font-extrabold text-indigo-800">SliceCal</h1>
+      {/* Modern navigation bar with glassmorphism effect */}
+      <nav className="sticky top-0 z-50 backdrop-blur-md bg-white/70 border-b border-gray-200/50 shadow-sm">
+        <div className="container mx-auto px-4 max-w-[960px] py-4">
+          <div className="flex items-center gap-3">
+            <img src="/lovable-uploads/df2c7151-598d-430b-9318-0e5a728a54f6.png" alt="SliceCal Logo" className="w-12 h-12" />
+            <h1 className="text-2xl font-extrabold text-indigo-800">SliceCal</h1>
           </div>
+        </div>
+      </nav>
+
+      <div className="container mx-auto px-4 max-w-[960px] py-8">
+        <div className="text-center mb-8">
           <p className="max-w-2xl mx-auto font-thin text-slate-800 text-2xl">A smart way to calculate 3D printing costs</p>
         </div>
 
@@ -128,7 +134,7 @@ const Index = () => {
 
           {/* Right side - Calculate button and results (2 columns) */}
           <div className="lg:col-span-2 space-y-6">
-            <div className="sticky top-8">
+            <div className="sticky top-24">
               <div className="text-center mb-6">
                 <Button onClick={calculateCost} size="lg" disabled={!isFormValid()} className="w-full text-white font-semibold py-9 text-lg shadow-lg transition-all duration-200 hover:shadow-xl bg-indigo-800 hover:bg-indigo-700">
                   <Calculator className="w-5 h-5 mr-2" />
