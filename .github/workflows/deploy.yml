@@ -1,6 +1,5 @@
 # Build Vite app and deploy to GitHub Pages (so the live site serves built JS, not source).
-# In repo Settings → Pages, set "Deploy from a branch" to branch "gh-pages" / root,
-# OR set "Source" to "GitHub Actions" and use this workflow as the deploy source.
+# In repo Settings → Pages, set "Source" to "GitHub Actions".
 name: Deploy to GitHub Pages
 
 on:
