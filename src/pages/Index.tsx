@@ -7,6 +7,7 @@ import CountrySelector from '@/components/CountrySelector';
 import TimeSelector from '@/components/TimeSelector';
 import FilamentInputs from '@/components/FilamentInputs';
 import CostResults from '@/components/CostResults';
+import { WhatsNextModal } from '@/components/WhatsNextModal';
 import { PrinterData, CountryData } from '@/lib/data';
 interface CalculationResult {
   energyCost: number;
@@ -66,9 +67,12 @@ const Index = () => {
       {/* Modern navigation bar with glassmorphism effect */}
       <nav className="sticky top-0 z-50 backdrop-blur-md bg-white/70 border-b border-gray-200/50 shadow-sm">
         <div className="container mx-auto px-4 max-w-[960px] py-4">
-          <div className="flex items-center gap-3">
-            <img src="/lovable-uploads/slicecal-logo-transparent-800.png" alt="SliceCal Logo" className="w-[58px] h-[58px]" />
-            <h1 className="text-2xl font-extrabold text-indigo-800">SliceCal</h1>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <img src="/lovable-uploads/slicecal-logo-transparent-800.png" alt="SliceCal Logo" className="w-[58px] h-[58px]" />
+              <h1 className="text-2xl font-extrabold text-indigo-800">SliceCal</h1>
+            </div>
+            <WhatsNextModal />
           </div>
         </div>
       </nav>
