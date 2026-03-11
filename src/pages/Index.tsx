@@ -73,17 +73,17 @@ const Index = () => {
         </div>
       </nav>
 
-      <div className="container mx-auto px-4 max-w-[960px] py-8">
-        <div className="text-center mb-8">
-          <p className="max-w-2xl mx-auto font-thin text-slate-800 text-2xl">A smart way to calculate 3D printing costs</p>
-        </div>
+      <main className="container mx-auto px-4 max-w-[960px] py-8">
+        <header className="text-center mb-8">
+          <h2 className="max-w-2xl mx-auto font-thin text-slate-800 text-2xl">A smart way to calculate 3D printing costs</h2>
+        </header>
 
         <div className="max-w-4xl mx-auto grid gap-8 lg:grid-cols-5">
           {/* Left side - Inputs (3 columns) */}
-          <div className="lg:col-span-3 space-y-6">
-            <Card className="border-gray-200 shadow-sm bg-white">
+          <section aria-label="Calculator inputs" className="lg:col-span-3 space-y-6">
+            <Card className="border-gray-200 shadow-sm bg-white" aria-labelledby="printer-selection-title">
               <CardHeader className="pb-4 border-b border-gray-100">
-                <CardTitle className="text-lg text-gray-700 flex items-center gap-2 font-bold">
+                <CardTitle id="printer-selection-title" className="text-lg text-gray-700 flex items-center gap-2 font-bold">
                   <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                   Printer selection
                 </CardTitle>
@@ -93,9 +93,9 @@ const Index = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-gray-200 shadow-sm bg-white">
+            <Card className="border-gray-200 shadow-sm bg-white" aria-labelledby="location-electricity-title">
               <CardHeader className="pb-4 border-b border-gray-100">
-                <CardTitle className="text-lg text-gray-700 flex items-center gap-2 font-bold">
+                <CardTitle id="location-electricity-title" className="text-lg text-gray-700 flex items-center gap-2 font-bold">
                   <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                   Location - electricity rate
                 </CardTitle>
@@ -106,9 +106,9 @@ const Index = () => {
             </Card>
 
             <div className="grid gap-6 md:grid-cols-2">
-              <Card className="border-gray-200 shadow-sm bg-white">
+              <Card className="border-gray-200 shadow-sm bg-white" aria-labelledby="print-duration-title">
                 <CardHeader className="pb-4 border-b border-gray-100">
-                  <CardTitle className="text-lg text-gray-700 flex items-center gap-2 font-bold">
+                  <CardTitle id="print-duration-title" className="text-lg text-gray-700 flex items-center gap-2 font-bold">
                     <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                     Print duration
                   </CardTitle>
@@ -118,9 +118,9 @@ const Index = () => {
                 </CardContent>
               </Card>
 
-              <Card className="border-gray-200 shadow-sm bg-white">
+              <Card className="border-gray-200 shadow-sm bg-white" aria-labelledby="material-costs-title">
                 <CardHeader className="pb-4 border-b border-gray-100">
-                  <CardTitle className="text-lg text-gray-700 flex items-center gap-2 font-bold">
+                  <CardTitle id="material-costs-title" className="text-lg text-gray-700 flex items-center gap-2 font-bold">
                     <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                     Material costs
                   </CardTitle>
@@ -130,10 +130,10 @@ const Index = () => {
                 </CardContent>
               </Card>
             </div>
-          </div>
+          </section>
 
           {/* Right side - Calculate button and results (2 columns) */}
-          <div className="lg:col-span-2 space-y-6">
+          <section aria-label="Calculation results" className="lg:col-span-2 space-y-6">
             <div className="sticky top-[122px]">
               <div className="text-center mb-6">
                 <Button onClick={calculateCost} size="lg" disabled={!isFormValid()} className="w-full text-white font-semibold py-9 text-lg shadow-lg transition-all duration-200 hover:shadow-xl bg-indigo-800 hover:bg-indigo-700">
@@ -153,9 +153,9 @@ const Index = () => {
                 </p>
               </div>
             </div>
-          </div>
+          </section>
         </div>
-      </div>
+      </main>
     </div>;
 };
 export default Index;
