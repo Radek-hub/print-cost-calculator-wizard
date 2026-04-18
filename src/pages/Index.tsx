@@ -8,6 +8,7 @@ import TimeSelector from '@/components/TimeSelector';
 import FilamentInputs from '@/components/FilamentInputs';
 import CostResults from '@/components/CostResults';
 import { WhatsNextModal } from '@/components/WhatsNextModal';
+import { SeoContentSection } from '@/components/SeoContentSection';
 import { PrinterData, CountryData } from '@/lib/data';
 interface CalculationResult {
   energyCost: number;
@@ -69,7 +70,13 @@ const Index = () => {
         <div className="container mx-auto px-4 max-w-[960px] py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <img src="/lovable-uploads/slicecal-logo-transparent-800.png" alt="SliceCal Logo" className="w-[58px] h-[58px]" />
+              <img
+                src="/lovable-uploads/slicecal-logo-transparent-800.png"
+                alt="SliceCal Logo"
+                width={58}
+                height={58}
+                className="h-[58px] w-[58px]"
+              />
               <h1 className="text-2xl font-extrabold text-indigo-800">SliceCal</h1>
             </div>
             <WhatsNextModal />
@@ -159,6 +166,8 @@ const Index = () => {
             </div>
           </section>
         </div>
+
+        <SeoContentSection />
       </main>
     </div>;
 };
