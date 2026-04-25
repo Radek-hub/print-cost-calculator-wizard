@@ -19,11 +19,13 @@ export interface Country {
 export const PrinterData: Record<string, PrinterBrand> = {
   "Bambu Lab": {
     models: [
+      { name: "A1 Mini", powerConsumption: 0.10 },
       { name: "A1", powerConsumption: 0.15 },
-      { name: "A1 mini", powerConsumption: 0.12 },
-      { name: "X1 Carbon", powerConsumption: 0.35 },
-      { name: "P1P", powerConsumption: 0.25 },
-      { name: "P1S", powerConsumption: 0.28 }
+      { name: "P1P", powerConsumption: 0.12 },
+      { name: "P1S", powerConsumption: 0.20 },
+      { name: "X1 Carbon", powerConsumption: 0.25 },
+      { name: "X1", powerConsumption: 0.22 },
+      { name: "X1E", powerConsumption: 0.30 }
     ]
   },
   "Prusa": {
