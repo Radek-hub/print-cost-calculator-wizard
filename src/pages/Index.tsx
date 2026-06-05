@@ -9,6 +9,7 @@ import FilamentInputs from '@/components/FilamentInputs';
 import CostResults from '@/components/CostResults';
 import { WhatsNextModal } from '@/components/WhatsNextModal';
 import { SeoContentSection } from '@/components/SeoContentSection';
+import { Footer } from '@/components/Footer';
 import { PrinterData, CountryData } from '@/lib/data';
 interface CalculationResult {
   energyCost: number;
@@ -169,6 +170,8 @@ const Index = () => {
 
         <SeoContentSection />
       </main>
+
+      <Footer />
     </div>;
 };
 export default Index;
