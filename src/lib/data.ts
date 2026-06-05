@@ -45,6 +45,38 @@ export const PrinterData: Record<string, PrinterBrand> = {
       { name: "K1 Max", powerConsumption: 0.35 },
       { name: "Sermoon V1 Pro", powerConsumption: 0.22 }
     ]
+  },
+  "Anycubic": {
+    models: [
+      { name: "Kobra 3 Combo", powerConsumption: 0.22 },
+      { name: "Kobra 3", powerConsumption: 0.18 },
+      { name: "Kobra 3 Max", powerConsumption: 0.35 },
+      { name: "Kobra S1 Combo", powerConsumption: 0.25 },
+      { name: "Kobra 2 Pro", powerConsumption: 0.18 },
+      { name: "Kobra 2 Max", powerConsumption: 0.35 },
+      { name: "Kobra 2 Neo", powerConsumption: 0.12 }
+    ]
+  },
+  "Elegoo": {
+    models: [
+      { name: "Neptune 4", powerConsumption: 0.18 },
+      { name: "Neptune 4 Pro", powerConsumption: 0.20 },
+      { name: "Neptune 4 Plus", powerConsumption: 0.28 },
+      { name: "Neptune 4 Max", powerConsumption: 0.35 },
+      { name: "Neptune 3 Pro", powerConsumption: 0.16 },
+      { name: "Centauri Carbon", powerConsumption: 0.30 },
+      { name: "Centauri Carbon 2 Combo", powerConsumption: 0.35 }
+    ]
+  },
+  "QIDI Tech": {
+    models: [
+      { name: "Q1 Pro", powerConsumption: 0.30 },
+      { name: "Plus4", powerConsumption: 0.40 },
+      { name: "X-Max 3", powerConsumption: 0.45 },
+      { name: "X-Plus 3", powerConsumption: 0.35 },
+      { name: "X-Smart 3", powerConsumption: 0.22 },
+      { name: "i-Fast", powerConsumption: 0.50 }
+    ]
   }
 };
 
