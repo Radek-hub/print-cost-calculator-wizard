@@ -63,7 +63,10 @@ export function WhatsNextModal() {
         </div>
         <DialogFooter className="sm:justify-center pt-2">
           <DialogClose asChild>
-            <Button className="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-6 px-8 rounded-xl text-lg shadow-lg hover:shadow-xl transition-all">
+            <Button
+              size="lg"
+              className="w-full sm:w-auto text-white font-semibold text-lg shadow-lg transition-all duration-200 hover:shadow-xl bg-indigo-800 hover:bg-indigo-700"
+            >
               Got it, can't wait!
             </Button>
           </DialogClose>
