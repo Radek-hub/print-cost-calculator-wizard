@@ -14,8 +14,12 @@ export function WhatsNextModal() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <button className="text-sm font-medium text-indigo-600 hover:text-indigo-800 transition-colors underline-offset-4 hover:underline">
-          The workshop is evolving: see what’s next
+        <button className="w-full text-left text-xs sm:text-sm font-medium text-indigo-600 hover:text-indigo-800 transition-colors underline-offset-4 hover:underline leading-snug">
+          <span className="block sm:inline">The workshop is evolving:</span>
+          <span className="block sm:inline">
+            <span className="hidden sm:inline"> </span>
+            see what’s next
+          </span>
         </button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto">
