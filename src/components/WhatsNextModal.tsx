@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type SyntheticEvent } from "react";
 import {
   Dialog,
   DialogContent,
@@ -8,23 +8,30 @@ import {
   DialogClose,
 } from "@/components/ui/dialog";
 import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
-} from "@/components/ui/drawer";
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+} from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Rocket, Folder, Database } from "lucide-react";
 
-function WhatsNextTrigger({ onClick }: { onClick: () => void }) {
+function WhatsNextTrigger({ onOpen }: { onOpen: () => void }) {
+  const handleActivate = (event: SyntheticEvent) => {
+    event.preventDefault();
+    event.stopPropagation();
+    onOpen();
+  };
+
   return (
     <button
       type="button"
-      onClick={onClick}
-      className="w-full text-left text-xs sm:text-sm font-medium text-indigo-600 hover:text-indigo-800 transition-colors underline-offset-4 hover:underline leading-snug"
+      onClick={handleActivate}
+      onTouchEnd={handleActivate}
+      className="relative z-10 w-full touch-manipulation cursor-pointer text-left text-xs sm:text-sm font-medium text-indigo-600 hover:text-indigo-800 active:text-indigo-900 transition-colors underline-offset-4 hover:underline leading-snug py-1"
     >
       <span className="block sm:inline">The workshop is evolving:</span>
       <span className="block sm:inline">
@@ -80,7 +87,7 @@ function WhatsNextItems() {
 function WhatsNextCloseButton({
   CloseComponent,
 }: {
-  CloseComponent: typeof DialogClose | typeof DrawerClose;
+  CloseComponent: typeof DialogClose | typeof SheetClose;
 }) {
   return (
     <CloseComponent asChild>
@@ -94,7 +101,7 @@ function WhatsNextCloseButton({
   );
 }
 
-function WhatsNextDrawer({
+function WhatsNextSheet({
   open,
   onOpenChange,
 }: {
@@ -102,21 +109,25 @@ function WhatsNextDrawer({
   onOpenChange: (open: boolean) => void;
 }) {
   return (
-    <Drawer open={open} onOpenChange={onOpenChange} shouldScaleBackground={false}>
-      <DrawerContent className="max-h-[90vh]">
-        <DrawerHeader className="px-6 pb-0">
-          <DrawerTitle className="text-2xl font-bold text-center mb-2 text-indigo-900">
+    <Sheet open={open} onOpenChange={onOpenChange}>
+      <SheetContent
+        side="bottom"
+        className="z-[60] max-h-[90vh] rounded-t-[10px] px-0 pb-6 [&>button]:top-3"
+      >
+        <div className="mx-auto mt-2 h-2 w-[100px] shrink-0 rounded-full bg-muted" />
+        <SheetHeader className="px-6 pb-0 text-center">
+          <SheetTitle className="text-2xl font-bold text-indigo-900">
             The workshop is evolving
-          </DrawerTitle>
-        </DrawerHeader>
+          </SheetTitle>
+        </SheetHeader>
         <div className="overflow-y-auto px-6">
           <WhatsNextItems />
         </div>
-        <DrawerFooter className="px-6 pt-2">
-          <WhatsNextCloseButton CloseComponent={DrawerClose} />
-        </DrawerFooter>
-      </DrawerContent>
-    </Drawer>
+        <SheetFooter className="px-6 pt-2">
+          <WhatsNextCloseButton CloseComponent={SheetClose} />
+        </SheetFooter>
+      </SheetContent>
+    </Sheet>
   );
 }
 
@@ -150,9 +161,9 @@ export function WhatsNextModal() {
 
   return (
     <>
-      <WhatsNextTrigger onClick={() => setOpen(true)} />
+      <WhatsNextTrigger onOpen={() => setOpen(true)} />
       {isMobile ? (
-        <WhatsNextDrawer open={open} onOpenChange={setOpen} />
+        <WhatsNextSheet open={open} onOpenChange={setOpen} />
       ) : (
         <WhatsNextDialog open={open} onOpenChange={setOpen} />
       )}
