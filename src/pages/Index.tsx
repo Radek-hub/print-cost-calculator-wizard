@@ -67,7 +67,7 @@ const Index = () => {
   };
   return <div className="min-h-screen bg-gradient-to-b from-white via-white to-gray-50">
       {/* Modern navigation bar with glassmorphism effect */}
-      <nav className="sticky top-0 z-50 backdrop-blur-md bg-white/70 border-b border-gray-200/50 shadow-sm">
+      <nav className="sticky top-0 z-50 bg-white md:bg-white/70 md:backdrop-blur-md border-b border-gray-200/50 shadow-sm">
         <div className="container mx-auto px-4 max-w-[960px] py-4">
           <div className="flex items-start sm:items-center justify-between gap-4">
             <div className="flex items-center gap-3 shrink-0">
@@ -80,7 +80,7 @@ const Index = () => {
               />
               <h1 className="text-2xl font-extrabold text-indigo-800">SliceCal</h1>
             </div>
-            <div className="ml-auto min-w-0 pl-2 max-w-[calc(100%-10.5rem)] sm:max-w-none sm:pl-0">
+            <div className="relative z-10 ml-auto min-w-0 pl-2 max-w-[calc(100%-10.5rem)] sm:max-w-none sm:pl-0">
               <WhatsNextModal />
             </div>
           </div>

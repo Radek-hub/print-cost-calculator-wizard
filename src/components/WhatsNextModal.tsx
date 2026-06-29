@@ -1,28 +1,38 @@
+import { useState, type SyntheticEvent } from "react";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
   DialogFooter,
   DialogClose,
 } from "@/components/ui/dialog";
 import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from "@/components/ui/drawer";
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+} from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Rocket, Folder, Database } from "lucide-react";
 
-function WhatsNextTrigger() {
+function WhatsNextTrigger({ onOpen }: { onOpen: () => void }) {
+  const handleActivate = (event: SyntheticEvent) => {
+    event.preventDefault();
+    event.stopPropagation();
+    onOpen();
+  };
+
   return (
-    <button className="w-full text-left text-xs sm:text-sm font-medium text-indigo-600 hover:text-indigo-800 transition-colors underline-offset-4 hover:underline leading-snug">
+    <button
+      type="button"
+      onClick={handleActivate}
+      onTouchEnd={handleActivate}
+      className="relative z-10 w-full touch-manipulation cursor-pointer text-left text-xs sm:text-sm font-medium text-indigo-600 hover:text-indigo-800 active:text-indigo-900 transition-colors underline-offset-4 hover:underline leading-snug py-1"
+    >
       <span className="block sm:inline">The workshop is evolving:</span>
       <span className="block sm:inline">
         <span className="hidden sm:inline"> </span>
@@ -77,7 +87,7 @@ function WhatsNextItems() {
 function WhatsNextCloseButton({
   CloseComponent,
 }: {
-  CloseComponent: typeof DialogClose | typeof DrawerClose;
+  CloseComponent: typeof DialogClose | typeof SheetClose;
 }) {
   return (
     <CloseComponent asChild>
@@ -91,37 +101,45 @@ function WhatsNextCloseButton({
   );
 }
 
-export function WhatsNextModal() {
-  const isMobile = useIsMobile();
-
-  if (isMobile) {
-    return (
-      <Drawer>
-        <DrawerTrigger asChild>
-          <WhatsNextTrigger />
-        </DrawerTrigger>
-        <DrawerContent className="max-h-[90vh]">
-          <DrawerHeader className="px-6 pb-0">
-            <DrawerTitle className="text-2xl font-bold text-center mb-2 text-indigo-900">
-              The workshop is evolving
-            </DrawerTitle>
-          </DrawerHeader>
-          <div className="overflow-y-auto px-6">
-            <WhatsNextItems />
-          </div>
-          <DrawerFooter className="px-6 pt-2">
-            <WhatsNextCloseButton CloseComponent={DrawerClose} />
-          </DrawerFooter>
-        </DrawerContent>
-      </Drawer>
-    );
-  }
-
+function WhatsNextSheet({
+  open,
+  onOpenChange,
+}: {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+}) {
   return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <WhatsNextTrigger />
-      </DialogTrigger>
+    <Sheet open={open} onOpenChange={onOpenChange}>
+      <SheetContent
+        side="bottom"
+        className="z-[60] max-h-[90vh] rounded-t-[10px] px-0 pb-6 [&>button]:top-3"
+      >
+        <div className="mx-auto mt-2 h-2 w-[100px] shrink-0 rounded-full bg-muted" />
+        <SheetHeader className="px-6 pb-0 text-center">
+          <SheetTitle className="text-2xl font-bold text-indigo-900">
+            The workshop is evolving
+          </SheetTitle>
+        </SheetHeader>
+        <div className="overflow-y-auto px-6">
+          <WhatsNextItems />
+        </div>
+        <SheetFooter className="px-6 pt-2">
+          <WhatsNextCloseButton CloseComponent={SheetClose} />
+        </SheetFooter>
+      </SheetContent>
+    </Sheet>
+  );
+}
+
+function WhatsNextDialog({
+  open,
+  onOpenChange,
+}: {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+}) {
+  return (
+    <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold text-center mb-2 text-indigo-900">
@@ -134,5 +152,21 @@ export function WhatsNextModal() {
         </DialogFooter>
       </DialogContent>
     </Dialog>
+  );
+}
+
+export function WhatsNextModal() {
+  const [open, setOpen] = useState(false);
+  const isMobile = useIsMobile();
+
+  return (
+    <>
+      <WhatsNextTrigger onOpen={() => setOpen(true)} />
+      {isMobile ? (
+        <WhatsNextSheet open={open} onOpenChange={setOpen} />
+      ) : (
+        <WhatsNextDialog open={open} onOpenChange={setOpen} />
+      )}
+    </>
   );
 }
