@@ -112,18 +112,18 @@ function WhatsNextSheet({
     <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetContent
         side="bottom"
-        className="z-[60] max-h-[90vh] rounded-t-[10px] px-0 pb-6 [&>button]:top-3"
+        className="z-[60] flex max-h-[min(90dvh,90vh)] flex-col overflow-hidden rounded-t-[10px] p-0 pb-[max(1.5rem,env(safe-area-inset-bottom))] [&>button]:right-4 [&>button]:top-4 [&>button]:z-20"
       >
         <div className="mx-auto mt-2 h-2 w-[100px] shrink-0 rounded-full bg-muted" />
-        <SheetHeader className="px-6 pb-0 text-center">
+        <SheetHeader className="shrink-0 px-6 pb-0 text-center">
           <SheetTitle className="text-2xl font-bold text-indigo-900">
             The workshop is evolving
           </SheetTitle>
         </SheetHeader>
-        <div className="overflow-y-auto px-6">
+        <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-6 [-webkit-overflow-scrolling:touch]">
           <WhatsNextItems />
         </div>
-        <SheetFooter className="px-6 pt-2">
+        <SheetFooter className="shrink-0 px-6 pt-2">
           <WhatsNextCloseButton CloseComponent={SheetClose} />
         </SheetFooter>
       </SheetContent>
