@@ -4,7 +4,8 @@ export function Footer() {
       <div className="container mx-auto px-4 max-w-[960px] text-center text-sm text-gray-500 space-y-2">
         <p>© 2026 SliceCal. All rights reserved.</p>
         <p>
-          Electricity rates are approximate and updated periodically.{" "}
+          Electricity rates are approximate residential averages, last updated April 2026,
+          based on public utility and Eurostat data.{" "}
           <a
             href="https://forms.gle/D6G4vWLwT6mRch5D8"
             target="_blank"

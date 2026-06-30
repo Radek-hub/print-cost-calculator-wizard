@@ -78,7 +78,7 @@ const Index = () => {
                 height={58}
                 className="h-[58px] w-[58px]"
               />
-              <h1 className="text-2xl font-extrabold text-indigo-800">SliceCal</h1>
+              <span className="text-2xl font-extrabold text-indigo-800">SliceCal</span>
             </div>
             <div className="relative z-10 ml-auto min-w-0 pl-2 max-w-[calc(100%-10.5rem)] sm:max-w-none sm:pl-0">
               <WhatsNextModal />
@@ -89,7 +89,8 @@ const Index = () => {
 
       <main className="container mx-auto px-4 max-w-[960px] py-8">
         <header className="text-center mb-8">
-          <h2 className="max-w-2xl mx-auto font-thin text-slate-800 text-2xl">A smart way to calculate 3D printing costs</h2>
+          <h1 className="max-w-2xl mx-auto font-bold text-slate-900 text-3xl">Free 3D printing cost calculator</h1>
+          <p className="max-w-2xl mx-auto mt-3 font-thin text-slate-600 text-xl">A smart way to calculate filament, electricity, and total print costs</p>
         </header>
 
         <div className="max-w-4xl mx-auto grid gap-8 lg:grid-cols-5">

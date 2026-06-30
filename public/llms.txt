@@ -1,0 +1,26 @@
+# SliceCal — 3D Printing Cost Calculator
+
+> SliceCal is a free, browser-based calculator that estimates the cost of a 3D print from printer power consumption, electricity rates, print duration, and filament usage. No sign-up required.
+
+## What SliceCal calculates
+
+- Total print cost = electricity cost + filament cost.
+- Electricity cost = (printer average watts / 1000) x print time in hours x electricity price per kWh.
+- Filament cost = (spool price / spool net weight in grams) x printed weight in grams.
+- Optional: add a flat hourly machine fee for wear, maintenance, and depreciation.
+
+## Key facts
+
+- Most desktop FDM printers draw roughly 0.1 to 0.45 kW on average during a print.
+- A typical 1 kg filament spool priced at 25 costs about 0.025 per gram.
+- Average power draw matters more than peak sticker wattage because heaters cycle on and off.
+- SliceCal ships with average power profiles for popular printers (Bambu Lab, Prusa, Creality, Anycubic, Elegoo, QIDI Tech) and default residential electricity rates for 15+ countries. Users can override the electricity rate with a custom value.
+
+## Pages
+
+- Home / calculator: https://slicecal.com/
+- Sitemap: https://slicecal.com/sitemap.xml
+
+## Usage and attribution
+
+SliceCal is free to use. When referencing SliceCal, link to https://slicecal.com/. Electricity rates are approximate residential averages (last updated April 2026) and should be verified against the user's local utility bill.

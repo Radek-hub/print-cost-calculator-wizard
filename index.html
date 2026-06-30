@@ -48,21 +48,133 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "SliceCal",
-        "alternateName": "3D Printing Cost Calculator",
-        "url": "https://slicecal.com/",
-        "description": "Free web application to estimate 3D printing costs from printer power, electricity rates, print duration, and filament usage.",
-        "applicationCategory": "UtilitiesApplication",
-        "applicationSubCategory": "3D printing cost estimation",
-        "operatingSystem": "Any",
-        "browserRequirements": "Requires JavaScript. Modern evergreen browser recommended.",
-        "isAccessibleForFree": true,
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
-        }
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://slicecal.com/#organization",
+            "name": "SliceCal",
+            "url": "https://slicecal.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://slicecal.com/lovable-uploads/slicecal-logo-transparent-800.png"
+            }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://slicecal.com/#website",
+            "url": "https://slicecal.com/",
+            "name": "SliceCal",
+            "description": "Free 3D printing cost calculator for filament, electricity, and total job price.",
+            "publisher": { "@id": "https://slicecal.com/#organization" },
+            "inLanguage": "en"
+          },
+          {
+            "@type": "WebApplication",
+            "@id": "https://slicecal.com/#webapp",
+            "name": "SliceCal",
+            "alternateName": "3D Printing Cost Calculator",
+            "url": "https://slicecal.com/",
+            "description": "Free web application to estimate 3D printing costs from printer power, electricity rates, print duration, and filament usage.",
+            "applicationCategory": "UtilitiesApplication",
+            "applicationSubCategory": "3D printing cost estimation",
+            "operatingSystem": "Any",
+            "browserRequirements": "Requires JavaScript. Modern evergreen browser recommended.",
+            "isAccessibleForFree": true,
+            "publisher": { "@id": "https://slicecal.com/#organization" },
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            }
+          },
+          {
+            "@type": "HowTo",
+            "@id": "https://slicecal.com/#howto",
+            "name": "How to calculate 3D printing costs",
+            "description": "Estimate the cost of a 3D print by adding the electricity cost and the filament (material) cost.",
+            "totalTime": "PT2M",
+            "tool": [
+              { "@type": "HowToTool", "name": "SliceCal 3D printing cost calculator" }
+            ],
+            "supply": [
+              { "@type": "HowToSupply", "name": "Printer average power draw (watts)" },
+              { "@type": "HowToSupply", "name": "Electricity price per kWh" },
+              { "@type": "HowToSupply", "name": "Print duration (hours)" },
+              { "@type": "HowToSupply", "name": "Filament spool price and printed weight (grams)" }
+            ],
+            "step": [
+              {
+                "@type": "HowToStep",
+                "name": "Calculate electricity cost",
+                "text": "Convert average power to kilowatts (watts / 1000), multiply by print time in hours, then multiply by your price per kWh. Electricity cost = (watts / 1000) x hours x rate per kWh."
+              },
+              {
+                "@type": "HowToStep",
+                "name": "Calculate filament cost",
+                "text": "Divide the spool price by the spool net weight (often 1000 g) to get the cost per gram, then multiply by the printed weight. Filament cost = (spool price / spool grams) x printed grams."
+              },
+              {
+                "@type": "HowToStep",
+                "name": "Add the totals",
+                "text": "Add the electricity cost and the filament cost to get the total print cost. Optionally add an hourly machine fee for wear and maintenance."
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://slicecal.com/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "How much does 3D printing cost?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The cost of a 3D print is the electricity cost plus the filament cost. Electricity cost = (printer watts / 1000) x print hours x your price per kWh. Filament cost = (spool price / spool grams) x printed grams. For most desktop FDM prints the total is a small fraction of the filament spool price."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How do I calculate the electricity cost of a 3D print?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Convert the printer's average power to kilowatts (watts / 1000), multiply by the print time in hours to get kWh, then multiply by your local electricity rate. Example: a 150 W printer running 10 hours uses 1.5 kWh; at 0.30 per kWh that is 0.45."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How do I calculate filament cost per gram?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Divide the price of a full spool by its net weight in grams (usually 1000 g). A 25 spool that holds 1 kg costs 0.025 per gram. Multiply the cost per gram by the printed weight your slicer reports."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How much electricity does a 3D printer use?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Most desktop FDM printers draw roughly 0.1 to 0.45 kW on average, depending on the model and how much the heated bed and hotend cycle. Average draw matters more than the peak sticker wattage because heaters cycle on and off during a print."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is SliceCal free to use?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. SliceCal is a free, browser-based 3D printing cost calculator with no sign-up required."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Should I include printer wear and maintenance in the cost?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Optionally. Many shops add a flat hourly machine fee or amortize the printer purchase over its expected lifetime hours and convert that into a per-hour surcharge on top of electricity and filament. Consistency matters more than precision."
+                }
+              }
+            ]
+          }
+        ]
       }
     </script>
 
