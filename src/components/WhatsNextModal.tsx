@@ -4,6 +4,7 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
+  DialogDescription,
   DialogFooter,
   DialogClose,
 } from "@/components/ui/dialog";
@@ -14,6 +15,7 @@ import {
   SheetFooter,
   SheetHeader,
   SheetTitle,
+  SheetDescription,
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -41,6 +43,9 @@ function WhatsNextTrigger({ onOpen }: { onOpen: () => void }) {
     </button>
   );
 }
+
+const WHATS_NEXT_DESCRIPTION =
+  "Preview of upcoming features including G-code import, project management, and filament inventory.";
 
 function WhatsNextItems() {
   return (
@@ -119,6 +124,7 @@ function WhatsNextSheet({
           <SheetTitle className="text-2xl font-bold text-indigo-900">
             The workshop is evolving
           </SheetTitle>
+          <SheetDescription className="sr-only">{WHATS_NEXT_DESCRIPTION}</SheetDescription>
         </SheetHeader>
         <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-6 [-webkit-overflow-scrolling:touch]">
           <WhatsNextItems />
@@ -145,6 +151,7 @@ function WhatsNextDialog({
           <DialogTitle className="text-2xl font-bold text-center mb-2 text-indigo-900">
             The workshop is evolving
           </DialogTitle>
+          <DialogDescription className="sr-only">{WHATS_NEXT_DESCRIPTION}</DialogDescription>
         </DialogHeader>
         <WhatsNextItems />
         <DialogFooter className="sm:justify-center pt-2">
